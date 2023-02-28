@@ -1,0 +1,25 @@
+name: my-react-app
+type: nodejs:14
+runtime:
+  extensions:
+    - cors
+    - fileinfo
+    - gd
+  environment:
+    NODE_ENV: production
+  web:
+    commands:
+      start: npm start -p $PORT
+    locations:
+      "/":
+        root: "build"
+        index:
+          - "index.html"
+        passthru: true
+        expires: 300s
+        passthru_headers:
+          - "Cache-Control"
+          - "Expires"
+    build:
+      flavor: "npm"
+      nodejs_version: "14"
