@@ -1,4 +1,4 @@
-name: my-react-app
+name: app
 type: nodejs:14
 runtime:
   extensions:
