@@ -1,7 +1,6 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import { Stack, Select, Button, ButtonGroup } from "@chakra-ui/react";
 import { AiOutlineDelete } from "react-icons/ai";
-import { FiCopy } from "react-icons/fi";
 import { GrFormUpload } from "react-icons/gr";
 
 import { ThemeProps } from "./Theme";
@@ -40,7 +39,7 @@ const Configs = (p: Props) => {
       }
       localStorage.setItem("theme-configs", JSON.stringify(configs));
     }
-  }, [config]);
+  }, [config, configs]);
 
   return (
     <Stack>
@@ -58,18 +57,18 @@ const Configs = (p: Props) => {
         </Select>
       </Stack>
       <ButtonGroup>
-      <Button onClick={()=> selectedConfig && setConfig(selectedConfig)} w="fit-content" size="sm" rounded={0} leftIcon={<GrFormUpload />}>
-        Load
-      </Button>
-      <Button  onClick={()=> {
-        if(selectedConfig?.id){
+        <Button onClick={() => selectedConfig && setConfig(selectedConfig)} w="fit-content" size="sm" rounded={0} leftIcon={<GrFormUpload />}>
+          Load
+        </Button>
+        <Button onClick={() => {
+          if (selectedConfig?.id) {
             const exist = configs.findIndex((c) => c.id === selectedConfig.id);
-            configs.splice(exist,1)
+            configs.splice(exist, 1)
             localStorage.setItem("theme-configs", JSON.stringify(configs));
-        }
-      }} w="fit-content" size="sm" rounded={0} leftIcon={<AiOutlineDelete />}>
-        Delete
-      </Button>
+          }
+        }} w="fit-content" size="sm" rounded={0} leftIcon={<AiOutlineDelete />}>
+          Delete
+        </Button>
       </ButtonGroup>
     </Stack>
   );

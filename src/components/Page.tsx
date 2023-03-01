@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Box, Divider, Flex, Heading, Stack, Button, Link, Input, InputGroup, InputLeftAddon } from "@chakra-ui/react";
+import { Box, Flex, Heading, Stack, Button, Link, Input, InputGroup, InputLeftAddon } from "@chakra-ui/react";
 import ColorThemes, { ThemeProps } from "./Theme";
 import uniqid from "uniqid";
 import { GrShare } from "react-icons/gr";
-import { FiCopy } from "react-icons/fi";
 import { VscCode } from "react-icons/vsc";
+import { GrSave } from "react-icons/gr";
 
 import Configs, { ConfigProps } from "./Configs";
 
@@ -68,6 +68,8 @@ const Page = () => {
   const [consoleUrl, setConsoleUrl] = useState("console.platform.sh");
   const [configs, setConfigs] = useState<ConfigProps>({ id: formatDate() });
 
+  const developmentEnvironment = process.env.ENVIRONMENT = "dev"
+
   useEffect(() => {
     configs.themes && setThemes(configs.themes);
     configs.variables && setVariables(configs.variables);
@@ -97,8 +99,10 @@ const Page = () => {
     }
   };
 
+  console.log('themes', themes)
+
   const data = useMemo(() => buildLink(variables, themes, ""), [themes, variables]);
-  const url = `https://${isValidHost(consoleUrl) || "console.platform.sh"}/?themePreview=${data.href}`;
+  const url = `${developmentEnvironment ? "http" : "https"}://${isValidHost(consoleUrl) || "console.platform.sh"}/?themePreview=${data.href}`;
   return (
     <Box maxWidth="60rem" margin="5rem auto">
       <Stack justify="space-between" mb="2rem" direction="row">
@@ -154,7 +158,20 @@ const Page = () => {
             themes={variables}
           />
         </Stack>
+
+
       </Flex>
+      <Flex justify="center" paddingTop={50}>
+
+        {(themes.length || variables.length) > 0 && <Button onClick={() => setConfigs({
+          ...configs,
+          themes,
+          variables,
+        })} w="fit-content" size="sm" rounded={0} leftIcon={<GrSave />}>
+          Save Configuration
+        </Button>}
+      </Flex>
+
     </Box>
   );
 };
