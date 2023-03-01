@@ -63,8 +63,8 @@ const cautionVariable = (variableName: ThemeProps, themes: ThemeProps[]) => {
 };
 
 const Page = () => {
-  const [themes, setThemes] = useState<ThemeProps[]>([{ id: "9", name: "primary", color: "green" }]);
-  const [variables, setVariables] = useState<ThemeProps[]>([{ id: "9", name: "primary", color: "green" }]);
+  const [themes, setThemes] = useState<ThemeProps[]>([]);
+  const [variables, setVariables] = useState<ThemeProps[]>([]);
   const [consoleUrl, setConsoleUrl] = useState("console.platform.sh");
   const [configs, setConfigs] = useState<ConfigProps>({ id: formatDate() });
 
