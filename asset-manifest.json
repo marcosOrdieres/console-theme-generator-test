@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/console-theme-generator-test.github.io/static/js/main.2451d180.js",
+    "static/js/787.c093bfc4.chunk.js": "/console-theme-generator-test.github.io/static/js/787.c093bfc4.chunk.js",
+    "index.html": "/console-theme-generator-test.github.io/index.html",
+    "main.2451d180.js.map": "/console-theme-generator-test.github.io/static/js/main.2451d180.js.map",
+    "787.c093bfc4.chunk.js.map": "/console-theme-generator-test.github.io/static/js/787.c093bfc4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.2451d180.js"
+  ]
+}
