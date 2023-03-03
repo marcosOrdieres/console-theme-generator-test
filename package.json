@@ -1,5 +1,5 @@
 {
-  "homepage": "https://ndifreke.github.io/console-theme-generator.github.io/",
+  "homepage": "https://marcosOrdieres.github.io/console-theme-generator-test.github.io",
   "name": "console-theme-generator",
   "version": "0.1.0",
   "private": true,
@@ -24,6 +24,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
